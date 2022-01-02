@@ -22,7 +22,7 @@ const TodayWeatherSummary = () => {
     const classes = useStyles();
 
     return (
-        <Grid className={classes.summary} item md={3} >
+        <Grid className={classes.summary} item md={3} xs={12} >
             <Search btn={classes.summarydetails}/>
             <TodaySummary/>
             <City/>

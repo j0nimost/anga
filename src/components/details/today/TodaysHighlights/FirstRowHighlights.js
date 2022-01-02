@@ -20,7 +20,7 @@ const FirstRowHighlights = () => {
             <Grid item xs={4}>
                 <Card sx={{maxWidth:'fit-content', maxHeight:'fit-content'}}>
                     <Typography variant="h6">UV Index</Typography>
-                    <CardContent>
+                    <CardContent className="uvDetail">
                         <UVChart/>
                         <h2 className="uv">7</h2>
                     </CardContent>
