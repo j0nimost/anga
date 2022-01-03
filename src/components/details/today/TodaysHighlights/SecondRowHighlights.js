@@ -30,15 +30,7 @@ const SecondRowHighlights = () => {
     const classes = useStyles();
     return (
         <Grid container spacing={3.8} className={classes.highlight}>
-            <Grid item xs={4} className={classes.grid}>
-                <Card sx={{maxWidth: 282, minHeight: 170}}>
-                    <Typography variant="h6">Visibility</Typography>
-                    <CardContent>
-                        <Typography variant="h2">4 <span className="todayHighlightDetail">km</span></Typography>
 
-                    </CardContent>
-                </Card> 
-            </Grid>
 
             <Grid item xs={4} className={classes.grid}>
                 <Card sx={{maxWidth: 282, minHeight: 170}}>
@@ -54,6 +46,16 @@ const SecondRowHighlights = () => {
                                     disabled
                                 />
                         </Stack>
+                    </CardContent>
+                </Card> 
+            </Grid>
+
+            <Grid item xs={4} className={classes.grid}>
+                <Card sx={{maxWidth: 282, minHeight: 170}}>
+                    <Typography variant="h6">Visibility</Typography>
+                    <CardContent>
+                        <Typography variant="h2">4 <span className="todayHighlightDetail">km</span></Typography>
+                        <Typography variant='body'>average 😒</Typography>
                     </CardContent>
                 </Card> 
             </Grid>
