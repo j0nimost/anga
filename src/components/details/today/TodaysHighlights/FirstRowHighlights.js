@@ -3,14 +3,14 @@ import { makeStyles } from "@mui/styles"
 import UVChart from "./UVChart"
 
 
-import sunrise from '../../../../imageIcons/sunrise.png';
-import sunset from '../../../../imageIcons/sunset.png';
+import sunriseIcon from '../../../../imageIcons/sunrise.png';
+import sunsetIcon from '../../../../imageIcons/sunset.png';
 import './firstRowUV.css'
 
 const useStyles = makeStyles({
     highlight: {
         marginTop: 2,
-        marginBottom: 15,
+        marginBottom: 8,
         marginLeft: 'auto',
         marginRight: 'auto',
         width: '100%'
@@ -32,16 +32,17 @@ const useStyles = makeStyles({
 
 })
 
-const FirstRowHighlights = () => {
+const FirstRowHighlights = ({currentWeather, sunset, sunrise}) => {
     const classes = useStyles();
+    console.log(sunset)
     return (
         <Grid container spacing={3.8} className={classes.highlight} >
             <Grid item xs={4}>
-                <Card sx={{maxWidth:'fit-content', maxHeight:'fit-content'}}>
+                <Card sx={{maxWidth:'fit-content', maxHeight:'fit-content', paddingBottom: '10px'}}>
                     <Typography variant="h6">UV Index</Typography>
                     <CardContent className="uvDetail">
-                        <UVChart/>
-                        <h2 className="uv">7</h2>
+                        <UVChart uvMeasure={currentWeather.uv}/>
+                        <h2 className="uv">{currentWeather.uv}</h2>
                     </CardContent>
                     
                 </Card>
@@ -51,33 +52,33 @@ const FirstRowHighlights = () => {
                 <Card sx={{maxWidth: 282, minHeight: 182}}>
                     <Typography variant="h6">Wind</Typography>
                     <CardContent>
-                        <Typography variant="h2">5.4 <span className="todayHighlightDetail">km/h</span></Typography>
-                        <Typography variant="body">Direction: NE</Typography>
+                        <Typography variant="h2">{currentWeather.wind_kph} <span className="todayHighlightDetail">km/h</span></Typography>
+                        <Typography variant="body">Direction: {currentWeather.wind_dir}</Typography>
                     </CardContent>
                 </Card> 
             </Grid>
 
             <Grid item xs={4}>
-                <Card sx={{maxWidth: 282, minHeight: 182}}>
+                <Card sx={{maxWidth: 282, minHeight: 182, paddingBottom: '4px'}}>
                     <Typography variant="h6">Sunrise {`&`} Sunset</Typography>
                     <CardContent sx={{paddingTop: '8px'}}>
                         <Stack spacing={2}>
                             <Box>
                                 <Grid container spacing={1} sx={{marginBottom: '8px'}}>
                                     <Grid item xs={5}>
-                                        <img src={sunrise} className={classes.sunIcon}/>
+                                        <img src={sunriseIcon} className={classes.sunIcon} alt="sunrise"/>
                                     </Grid>
                                     <Grid item xs={6} className={classes.suntimeFont}>
-                                        6:56 A.M
+                                        {sunrise}
                                     </Grid>
                                 </Grid>
 
                                 <Grid container spacing={1}>
                                     <Grid item xs={5}>
-                                        <img src={sunset} className={classes.sunIcon}/>
+                                        <img src={sunsetIcon} className={classes.sunIcon} alt="sunset"/>
                                     </Grid>
                                     <Grid item xs={6} className={classes.suntimeFont}>
-                                        6:05 P.M
+                                        {sunset}
                                     </Grid>
                                 </Grid>
                             </Box>

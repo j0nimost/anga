@@ -4,26 +4,49 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
     forecastTitle: {
-        paddingLeft: '4%'
+        paddingLeft: '8%',
+        textAlign: 'left'
+    },
+
+    imageSize: {
+        height: '40%',
+        width: '39%',
+        objectFit: 'contain',
+        marginLeft: 'auto',
+        marginRight: 'auto'
     }
 })
 
 const WeekForeCastDaily = ({forecast}) => {
     const classes = useStyles();
+    let icon;
+
+    ({icon} = forecast.day.condition);
+
+
+    let weekday = ['Sunday',
+                   'Monday',
+                   'Tuesday',
+                   'Wednesday',
+                   'Thursday',
+                   'Friday',
+                   'Saturday'][new Date(forecast.date).getDay()];
+
+
     return (
         <Grid item xs={4} md={2}>
             <Card sx={{maxWidth: '95%'}}>
                 <CardActionArea>
-                    <Typography component='h4' className={classes.forecastTitle}>{forecast.day}</Typography>
+                    <Typography component='h4' className={classes.forecastTitle}>{weekday}</Typography>
                     <CardMedia
+                        className={classes.imageSize}
                         component='img'
-                        height='45px'
-                        image={rainy}
+                        image={'https:' + icon}
 
                     />
-                    <CardContent>
+                    <CardContent sx={{paddingTop: '8px', textAlign: 'center' }}>
                         <Typography variant="body2" color="text.secondary">
-                            {forecast.high}&#186; &nbsp; {forecast.low}&#186;
+                            {forecast.day.maxtemp_c}&#186; &nbsp; {forecast.day.mintemp_c}&#186;
                         </Typography>
                     </CardContent>
                 </CardActionArea>

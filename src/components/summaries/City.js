@@ -21,8 +21,10 @@ const useStyles = makeStyles({
     }
 })
 
-const City = () => {
+const City = ({locationDetails}) => {
     const classes = useStyles();
+
+    console.log(locationDetails)
     return (
         <div className={classes.imageDiv}>
             <Box
@@ -38,7 +40,7 @@ const City = () => {
                 src={city}
             />
             <Card className={classes.cityName}>
-                Nairobi, Kenya
+                {locationDetails.name}, {locationDetails.country}
             </Card>
             
         </div>
