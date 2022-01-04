@@ -1,6 +1,6 @@
 import { TextField } from "@mui/material"
 
-const Search = ({btn}) => {
+const Search = ({btn, handleOnSearch}) => {
     return (
         <div>
             <TextField
@@ -9,6 +9,7 @@ const Search = ({btn}) => {
                 type="search"
                 variant="standard"
                 className={btn}
+                onKeyDown={handleOnSearch}
             />
         </div>
     )
