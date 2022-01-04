@@ -19,10 +19,6 @@ function App() {
 
   useEffect(() => {
 
-    let dateObj = new Date();
-    const date = dateObj.getFullYear() + '-' + dateObj.getMonth() + '-' + dateObj.getDate();
-
-    const hour = parseInt(dateObj.getHours());
 
     const fetchWeatherData = async () => {
 
@@ -34,6 +30,11 @@ function App() {
 
       if(Object.keys(data).length !== 0)
       {
+        
+        let dateObj = new Date(data.location.localtime);
+        const date = dateObj.getFullYear() + '-' + dateObj.getMonth() + '-' + dateObj.getDate();
+
+        const hour = parseInt(dateObj.getHours());
         
         setIconUrl(data.current.condition.icon);
         ({sunrise, sunset}= data.forecast.forecastday[0].astro);
