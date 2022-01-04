@@ -41,7 +41,7 @@ const TodaySummary = ({currentWeather, iconUrl, locationDetails}) => {
                 {currentWeather.temp_c} <span className={classes.degree}>&#8451;</span>
             </Typography>
             <Typography variant="h5">
-                {weekday[today.getDay()]}, <span className={classes.hrs}>{today.getHours() + ':' + today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes()}</span>
+                {weekday[today.getDay()]}, <span className={classes.hrs}>{(today.getHours() < 10 ? '0' + today.getHours().toString() : today.getHours()) + ':' + (today.getMinutes() < 10 ? '0' + today.getMinutes().toString() : today.getMinutes())}</span>
             </Typography>
 
         </div>
