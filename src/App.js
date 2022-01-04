@@ -15,6 +15,7 @@ function App() {
   const [currentSunset, setCurrentSunset] = useState({});
   const [iconUrl, setIconUrl] = useState('64x64'); // just set anything borake the rest of the window shows and not an error
   const [locationDetails, setlocationDetails] = useState({});
+  const [searchPlace, setsearchPlace] = useState('Nairobi');
 
   useEffect(() => {
 
@@ -27,7 +28,7 @@ function App() {
 
       let sunrise, sunset;
 
-      const response = await fetch(process.env.REACT_APP_WEATHER_URL, {mode:'cors'});
+      const response = await fetch(process.env.REACT_APP_WEATHER_URL + searchPlace.trim() + '&days=6&aqi=yes&alerts=no', {mode:'cors'});
 
       const data = response ? await response.json() : {};
 
@@ -56,9 +57,15 @@ function App() {
 
     fetchWeatherData();
 
-  }, []);
+  }, [searchPlace]);
 
-  console.log(locationDetails);
+  const handleOnSearch = (e) => {
+    if(e.key === 'Enter') {
+      setsearchPlace(e.target.value);  
+      setIsLoading(true);
+    }
+  }
+
   return (
     <>
     {
@@ -73,7 +80,7 @@ function App() {
         </div>
       :
       <Grid container>
-        <TodayWeatherSummary currentWeather={currentWeather} iconUrl={iconUrl} locationDetails={locationDetails}/>
+        <TodayWeatherSummary currentWeather={currentWeather} iconUrl={iconUrl} locationDetails={locationDetails} handleOnSearch={handleOnSearch}/>
         <WeatherForecastDetails currentWeather={currentWeather} todaysForecast={todaysForecast} weekForecast={weekForecast} sunrise={currentSunrise} sunset={currentSunset}/>
       </Grid>
   }
