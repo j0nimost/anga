@@ -31,13 +31,19 @@ const useStyles = makeStyles({
         paddingLeft: '4px',
         paddingRight: '4px',
         color: 'black'
+    },
+
+    tabNotActive: {
+        paddingLeft: '4px',
+        paddingRight: '4px',
+        color: 'gray'
     }
 });
 
 
 
 
-const WeatherForecastDetails = () => {
+const WeatherForecastDetails = ({currentWeather, todaysForecast, weekForecast, sunset, sunrise}) => {
 
     const [istodayForecast, setIstodayForecast ] = useState(true);
 
@@ -54,17 +60,17 @@ const WeatherForecastDetails = () => {
     return (
         <Grid container item md={9} className={classes.details}>
             <Tabs>
-                <Tab className={classes.tab} label='Today' onClick={handleIsTodayForecast} />
-                <Tab className={classes.tab} label='Week' onClick={handleIsWeekForecast}/>
+                <Tab className={istodayForecast ? classes.tabNotActive : classes.tab} label='Today'  onClick={handleIsTodayForecast} />
+                <Tab className={!istodayForecast ? classes.tabNotActive : classes.tab} label='Week' onClick={handleIsWeekForecast}/>
             </Tabs>
-            {istodayForecast ? <TodayForecast/> : <WeekForecast/>}
+            {istodayForecast ? <TodayForecast  todaysForecast={todaysForecast}/> : <WeekForecast weekForecast={weekForecast}/>}
 
             <ButtonGroup variant='outlined' size='small' aria-label='small button group' className={classes.btngrp}>
                 <Button className={classes.btn}>&#8451;</Button>
                 <Button className={classes.btn}>&#8457;</Button>
             </ButtonGroup>
 
-            <TodayHighlights/>
+            <TodayHighlights currentWeather={currentWeather} sunrise={sunrise} sunset={sunset}/>
         </Grid>
     )
 }

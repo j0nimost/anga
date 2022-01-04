@@ -4,27 +4,45 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
     forecastTitle: {
-        paddingLeft: '4%'
+        paddingLeft: '8%',
+        textAlign: 'left'
+    },
+
+    imageSize: {
+        height: '40%',
+        width: '39%',
+        objectFit: 'contain',
+        marginLeft: 'auto',
+        marginRight: 'auto'
     }
 })
 // 6hrs
 
 const WeatherByTheHour = ({forecast}) => {
     const classes = useStyles();
+    
+    let icon
+
+    const hour = forecast.time.substring(11);
+
+    ({icon} = forecast.condition);
+
+
+
     return (
         <Grid item xs={4} md={2}>
-            <Card sx={{maxWidth: '95%'}}>
+            <Card sx={{maxWidth: '95%', minHeight: '121.012px'}}>
                 <CardActionArea>
-                    <Typography component='h4' className={classes.forecastTitle}>{forecast.hour}</Typography>
+                    <Typography component='h4' className={classes.forecastTitle}>{hour}</Typography>
                     <CardMedia
+                        className={classes.imageSize}
                         component='img'
-                        height='45px'
-                        image={rainy}
+                        image={'https:' + icon}
 
                     />
-                    <CardContent>
+                    <CardContent sx={{paddingTop: '8px', textAlign: 'center'}}>
                         <Typography variant="body2" color="text.secondary">
-                            {forecast.high}&#186; &nbsp; {forecast.low}&#186;
+                            {forecast.temp_c}&#186; &nbsp; {forecast.humidity}%
                         </Typography>
                     </CardContent>
                 </CardActionArea>

@@ -1,6 +1,5 @@
 import { Typography, Box} from "@mui/material"
 import { makeStyles }from "@mui/styles"
-import rainy from '../../rainy-day.png'
 
 const useStyles = makeStyles({
     todaysWeather: {
@@ -16,9 +15,13 @@ const useStyles = makeStyles({
     }
 })
 
-const TodaySummary = () => {
+const TodaySummary = ({currentWeather, iconUrl, locationDetails}) => {
     const classes = useStyles();
+    const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
+
+    const weatherIconUrl = 'https:' + iconUrl.replace('64x64', '128x128');
+    let today = new Date(locationDetails.localtime);
     return (
         <div className={classes.todaysWeather}>
             <Box
@@ -30,15 +33,15 @@ const TodaySummary = () => {
                     maxHeight:{xs: 150, md: 300},
                     maxWidth: {xs: 150, md: 300}
                 }}
-                src={rainy}
+                src={weatherIconUrl}
 
             />
 
             <Typography variant="h2" component="h2">
-                12 <span className={classes.degree}>&#8451;</span>
+                {currentWeather.temp_c} <span className={classes.degree}>&#8451;</span>
             </Typography>
             <Typography variant="h5">
-                Monday, <span className={classes.hrs}>16:00</span>
+                {weekday[today.getDay()]}, <span className={classes.hrs}>{today.getHours() + ':' + today.getMinutes()}</span>
             </Typography>
 
         </div>
