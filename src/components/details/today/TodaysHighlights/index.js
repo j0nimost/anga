@@ -4,12 +4,12 @@ import SecondRowHighlights from "./SecondRowHighlights"
 import './todaysHighlights.css'
 
 
-const index = () => {
+const index = ({currentWeather, sunset, sunrise}) => {
     return (
         <>
             <Typography variant='h4' className="highlightTitle">Today's Highlight</Typography>
-            <FirstRowHighlights/>
-            <SecondRowHighlights/>
+            <FirstRowHighlights currentWeather={currentWeather} sunrise={sunrise} sunset={sunset}/>
+            <SecondRowHighlights currentWeather={currentWeather}/>
         </>
     )
 }

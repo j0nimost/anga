@@ -1,11 +1,10 @@
 import React from 'react'
 import WeatherByTheHourList from './WeatherByTheHourList'
-import TodaysHighlights from './TodaysHighlights';
 
-const index = () => {
+const index = ({ todaysForecast}) => {
     return (
         <>          
-            <WeatherByTheHourList/>
+            <WeatherByTheHourList  todaysForecast={todaysForecast}/>
         </>
     )
 }

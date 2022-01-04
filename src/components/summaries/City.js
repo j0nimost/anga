@@ -5,7 +5,8 @@ import { makeStyles } from '@mui/styles'
 const useStyles = makeStyles({
     imageDiv : {
         marginTop: '8%',
-        marginLeft: '22%'
+        marginLeft: '22%',
+        position: 'relative'
     },
 
     cityName:{
@@ -15,13 +16,15 @@ const useStyles = makeStyles({
             zIndex: '3',
             fontSize: '20px',
             position: 'absolute',
-            top: '75vh',
-            left: '9.4vw'
+            top: '15vh',
+            left: '3.5vw'
     }
 })
 
-const City = () => {
+const City = ({locationDetails}) => {
     const classes = useStyles();
+
+    console.log(locationDetails)
     return (
         <div className={classes.imageDiv}>
             <Box
@@ -37,7 +40,7 @@ const City = () => {
                 src={city}
             />
             <Card className={classes.cityName}>
-                Nairobi, Kenya
+                {locationDetails.name}, {locationDetails.country}
             </Card>
             
         </div>

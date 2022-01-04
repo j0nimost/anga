@@ -12,5 +12,9 @@ A weather app made using ReactJs, pet project
 ### Contributions
 Fork if interested to join
 
+### Attributes
+-  Nixxdsgn (Favicon)
+
+
 ### Author
 John Nyingi

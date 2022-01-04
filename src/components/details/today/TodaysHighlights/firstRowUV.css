@@ -1,7 +1,12 @@
 .uv {
     position: absolute;
     right: auto;
-    left: 35.6%;
-    top: 52%;
-    font-size: 32px;
+    left: 45.6%;
+    top: 38%;
+    font-size: 35px;
+    margin-top: 10px;
+}
+
+.uvDetail {
+    position: relative;
 }
