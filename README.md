@@ -1,5 +1,5 @@
 ## Anga
-A weather app made using ReactJs, pet project
+A weather app (https://angaapp.herokuapp.com/) made using ReactJs, pet project
 
 ![anga ui design](./images/anga_app.png)
 
@@ -7,7 +7,8 @@ A weather app made using ReactJs, pet project
 - WeatherAPI
 - Material UI
 
-#### NOTE: UNDER ACTIVE DEVELOPMENT
+#### NOTE
+Slightly buggy but it's an early release
 
 ### Contributions
 Fork if interested to join
