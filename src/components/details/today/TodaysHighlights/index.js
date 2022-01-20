@@ -1,15 +1,20 @@
 import { Typography } from "@mui/material"
 import FirstRowHighlights from "./FirstRowHighlights"
 import SecondRowHighlights from "./SecondRowHighlights"
+
+import { useSelector } from "react-redux";
 import './todaysHighlights.css'
 
 
-const index = ({currentWeather, sunset, sunrise}) => {
+const index = () => {
+
+    const states = useSelector((state) => state);
+    const {current, sunriseandsunset} = states;
     return (
         <>
             <Typography variant='h4' className="highlightTitle">Today's Highlight</Typography>
-            <FirstRowHighlights currentWeather={currentWeather} sunrise={sunrise} sunset={sunset}/>
-            <SecondRowHighlights currentWeather={currentWeather}/>
+            <FirstRowHighlights currentWeather={current} sunrise={sunriseandsunset.sunrise} sunset={sunriseandsunset.sunset}/>
+            <SecondRowHighlights currentWeather={current}/>
         </>
     )
 }

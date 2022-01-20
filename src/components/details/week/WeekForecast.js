@@ -1,15 +1,7 @@
 import { Grid } from "@mui/material"
 import { makeStyles } from "@mui/styles";
 import WeekForeCastDaily from "./WeekForeCastDaily";
-
-// const weekForeCast = [
-//     {day: 'Mon', high: 23, low: 17},
-//     {day: 'Tue', high: 24, low: 18},
-//     {day: 'Wed', high: 24, low: 18},
-//     {day: 'Thur', high: 22, low: 19},
-//     {day: 'Friday', high: 25, low: 21},
-//     {day: 'Sat', high: 16, low: 13},
-// ]
+import { useSelector } from "react-redux";
 
 const useStyle = makeStyles({
     gridContainer: {
@@ -20,8 +12,9 @@ const useStyle = makeStyles({
     }
 })
 
-const WeekForecast = ({weekForecast}) => {
+const WeekForecast = () => {
     const classes = useStyle();
+    const weekForecast = useSelector((state) => state.weekForecast);
     return (
         <Grid container spacing={2} className={classes.gridContainer}>
             {weekForecast.map((foreCast, index) => {

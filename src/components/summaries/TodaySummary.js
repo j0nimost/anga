@@ -1,5 +1,6 @@
 import { Typography, Box} from "@mui/material"
 import { makeStyles }from "@mui/styles"
+import {useSelector} from 'react-redux';
 
 const useStyles = makeStyles({
     todaysWeather: {
@@ -18,10 +19,10 @@ const useStyles = makeStyles({
 const TodaySummary = ({currentWeather, iconUrl, locationDetails}) => {
     const classes = useStyles();
     const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-
+    const {current, location} = useSelector((state) => state);
 
     const weatherIconUrl = 'https:' + iconUrl.replace('64x64', '128x128');
-    let today = new Date(locationDetails.localtime);
+    let today = new Date(location.localtime);
     return (
         <div className={classes.todaysWeather}>
             <Box
@@ -38,7 +39,7 @@ const TodaySummary = ({currentWeather, iconUrl, locationDetails}) => {
             />
 
             <Typography variant="h2" component="h2">
-                {currentWeather.temp_c} <span className={classes.degree}>&#8451;</span>
+                {current.temp_c} <span className={classes.degree}>&#8451;</span>
             </Typography>
             <Typography variant="h5">
                 {weekday[today.getDay()]}, <span className={classes.hrs}>{(today.getHours() < 10 ? '0' + today.getHours().toString() : today.getHours()) + ':' + (today.getMinutes() < 10 ? '0' + today.getMinutes().toString() : today.getMinutes())}</span>
