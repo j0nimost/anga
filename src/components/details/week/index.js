@@ -1,9 +1,9 @@
 import WeekForecast from "./WeekForecast"
 
-const index = ({weekForecast}) => {
+const index = () => {
     return (
         <>
-            <WeekForecast weekForecast={weekForecast}/>
+            <WeekForecast/>
         </>
     )
 }

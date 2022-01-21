@@ -1,17 +1,7 @@
 import { Grid } from "@mui/material"
 import { makeStyles } from "@mui/styles";
-import WeatherByTheHour from "./WeatherByTheHour"
-
-
-const todayWeatherForeCast = [
-
-    {hour: '10:00', high: 23, low: 17},
-    {hour: '11:00', high: 24, low: 18},
-    {hour: '12:00', high: 24, low: 18},
-    {hour: '13:00', high: 25, low: 19},
-    {hour: '14:00', high: 25, low: 20},
-    {hour: '15:00', high: 24, low: 20},
-];
+import WeatherByTheHour from "./WeatherByTheHour";
+import { useSelector } from "react-redux";
 
 const useStyle = makeStyles({
     gridContainer: {
@@ -22,8 +12,9 @@ const useStyle = makeStyles({
     }
 })
 
-const WeatherByTheHourList = ({ todaysForecast }) => {
+const WeatherByTheHourList = () => {
     const classes = useStyle();
+    const todaysForecast = useSelector((state) => state.forecast);
     return (
         <Grid container spacing={2} className={classes.gridContainer}>
             {todaysForecast.map((foreCast, index) => {

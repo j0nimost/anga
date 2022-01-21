@@ -1,11 +1,9 @@
 import { Grid, Button, ButtonGroup, Tabs, Tab} from "@mui/material"
 import { makeStyles }from "@mui/styles"
 import { useState } from "react";
-
 import TodayForecast from './details/today';
 import WeekForecast from "./details/week";
 import TodayHighlights from './details/today/TodaysHighlights'
-
 
 
 const useStyles = makeStyles({
@@ -43,9 +41,9 @@ const useStyles = makeStyles({
 
 
 
-const WeatherForecastDetails = ({currentWeather, todaysForecast, weekForecast, sunset, sunrise}) => {
+const WeatherForecastDetails = () => {
 
-    const [istodayForecast, setIstodayForecast ] = useState(true);
+    const [istodayForecast, setIstodayForecast] = useState(true);
 
     const handleIsTodayForecast =(e) => {
         setIstodayForecast(true);
@@ -63,14 +61,14 @@ const WeatherForecastDetails = ({currentWeather, todaysForecast, weekForecast, s
                 <Tab className={istodayForecast ? classes.tabNotActive : classes.tab} label='Today'  onClick={handleIsTodayForecast} />
                 <Tab className={!istodayForecast ? classes.tabNotActive : classes.tab} label='Week' onClick={handleIsWeekForecast}/>
             </Tabs>
-            {istodayForecast ? <TodayForecast  todaysForecast={todaysForecast}/> : <WeekForecast weekForecast={weekForecast}/>}
+            {istodayForecast ? <TodayForecast/> : <WeekForecast/>}
 
             <ButtonGroup variant='outlined' size='small' aria-label='small button group' className={classes.btngrp}>
                 <Button className={classes.btn}>&#8451;</Button>
                 <Button className={classes.btn}>&#8457;</Button>
             </ButtonGroup>
 
-            <TodayHighlights currentWeather={currentWeather} sunrise={sunrise} sunset={sunset}/>
+            <TodayHighlights/>
         </Grid>
     )
 }

@@ -1,6 +1,8 @@
 import {Grid, Card, CardContent, Typography , Stack, Slider} from '@mui/material'
 import { makeStyles } from "@mui/styles"
 
+import {useSelector} from 'react-redux';
+ 
 const useStyles = makeStyles({
     highlight: {
         marginTop: 7,
@@ -33,10 +35,11 @@ const useStyles = makeStyles({
 })
 
 
-const SecondRowHighlights = ({currentWeather}) => {
+const SecondRowHighlights = () => {
     const classes = useStyles();
+    const  {current} = useSelector((state) => state);
 
-    const aq = (currentWeather.air_quality.co.toFixed()/500)*100;
+    const aq = (current.air_quality.co.toFixed()/500)*100;
     console.log(aq);
     return (
         <Grid container spacing={3.8} className={classes.highlight}>
@@ -48,12 +51,12 @@ const SecondRowHighlights = ({currentWeather}) => {
                     <CardContent>
                     <Stack sx={{ height: 80}} direction="row" spacing={8}>
                             
-                            <Typography variant="h2">{currentWeather.humidity}<span className="todayHighlightDetail">%</span></Typography>
+                            <Typography variant="h2">{current.humidity}<span className="todayHighlightDetail">%</span></Typography>
                             <Slider
                                     className={classes.sliderHumidity}
                                     orientation="vertical"
                                     defaultValue={10}
-                                    value={currentWeather.humidity}
+                                    value={current.humidity}
                                     disabled
                                 />
                         </Stack>
@@ -65,14 +68,14 @@ const SecondRowHighlights = ({currentWeather}) => {
                 <Card sx={{maxWidth: 282, minHeight: 170}}>
                     <Typography variant="h6">Visibility</Typography>
                     <CardContent>
-                        <Typography variant="h2">{currentWeather.vis_km} <span className="todayHighlightDetail">km</span></Typography>
+                        <Typography variant="h2">{current.vis_km} <span className="todayHighlightDetail">km</span></Typography>
                         <Typography variant='body'>
                             {(() => {
-                                if(currentWeather.vis_km <= 2)
+                                if(current.vis_km <= 2)
                                 {
                                     return 'poor 😞'
                                 }
-                                else if(currentWeather.vis_km <= 5)
+                                else if(current.vis_km <= 5)
                                 {
                                     return 'average 😒';
                                 }
@@ -90,7 +93,7 @@ const SecondRowHighlights = ({currentWeather}) => {
                         <Stack sx={{ height: 80}} direction="row" spacing={8}>
                             
                             
-                            <Typography variant="h2">{currentWeather.air_quality.co.toFixed()}</Typography>
+                            <Typography variant="h2">{current.air_quality.co.toFixed()}</Typography>
                             <Slider
                                     className={
                                         (() =>{
