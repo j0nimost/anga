@@ -12,14 +12,16 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [iconUrl, setIconUrl] = useState('64x64'); // just set anything borake the rest of the window shows and not an error
   const [searchPlace, setsearchPlace] = useState('Nairobi');
+  
 
+  const dispatch = useDispatch();
+  const actions = bindActionCreators(actionCreators, dispatch);
+
+  
   useEffect(() => {
 
 
     const fetchWeatherData = async () => {
-
-      const dispatch = useDispatch();
-      const actions = bindActionCreators(actionCreators, dispatch);
 
 
       let sunrise, sunset;

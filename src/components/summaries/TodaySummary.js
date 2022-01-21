@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     }
 })
 
-const TodaySummary = ({currentWeather, iconUrl, locationDetails}) => {
+const TodaySummary = ({iconUrl}) => {
     const classes = useStyles();
     const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     const {current, location} = useSelector((state) => state);

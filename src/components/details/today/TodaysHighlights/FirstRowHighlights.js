@@ -1,7 +1,7 @@
 import { Grid, Card, CardContent, Typography, Stack, Box } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import UVChart from "./UVChart"
-
+import { useSelector } from "react-redux";
 
 import sunriseIcon from '../../../../imageIcons/sunrise.png';
 import sunsetIcon from '../../../../imageIcons/sunset.png';
@@ -32,17 +32,18 @@ const useStyles = makeStyles({
 
 })
 
-const FirstRowHighlights = ({currentWeather, sunset, sunrise}) => {
+const FirstRowHighlights = () => {
     const classes = useStyles();
-    console.log(sunset)
+    const {current, sunriseandsunset} = useSelector((state) => state);
+
     return (
         <Grid container spacing={3.8} className={classes.highlight} >
             <Grid item xs={4}>
                 <Card sx={{maxWidth:'fit-content', maxHeight:'fit-content', paddingBottom: '10px'}}>
                     <Typography variant="h6">UV Index</Typography>
                     <CardContent className="uvDetail">
-                        <UVChart uvMeasure={currentWeather.uv}/>
-                        <h2 className="uv">{currentWeather.uv}</h2>
+                        <UVChart uvMeasure={current.uv}/>
+                        <h2 className="uv">{current.uv}</h2>
                     </CardContent>
                     
                 </Card>
@@ -52,8 +53,8 @@ const FirstRowHighlights = ({currentWeather, sunset, sunrise}) => {
                 <Card sx={{maxWidth: 282, minHeight: 182}}>
                     <Typography variant="h6">Wind</Typography>
                     <CardContent>
-                        <Typography variant="h2">{currentWeather.wind_kph} <span className="todayHighlightDetail">km/h</span></Typography>
-                        <Typography variant="body">Direction: {currentWeather.wind_dir}</Typography>
+                        <Typography variant="h2">{current.wind_kph} <span className="todayHighlightDetail">km/h</span></Typography>
+                        <Typography variant="body">Direction: {current.wind_dir}</Typography>
                     </CardContent>
                 </Card> 
             </Grid>
@@ -69,7 +70,7 @@ const FirstRowHighlights = ({currentWeather, sunset, sunrise}) => {
                                         <img src={sunriseIcon} className={classes.sunIcon} alt="sunrise"/>
                                     </Grid>
                                     <Grid item xs={6} className={classes.suntimeFont}>
-                                        {sunrise}
+                                        {sunriseandsunset.sunrise}
                                     </Grid>
                                 </Grid>
 
@@ -78,7 +79,7 @@ const FirstRowHighlights = ({currentWeather, sunset, sunrise}) => {
                                         <img src={sunsetIcon} className={classes.sunIcon} alt="sunset"/>
                                     </Grid>
                                     <Grid item xs={6} className={classes.suntimeFont}>
-                                        {sunset}
+                                        {sunriseandsunset.sunset}
                                     </Grid>
                                 </Grid>
                             </Box>
