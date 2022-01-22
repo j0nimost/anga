@@ -20,13 +20,13 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-const TodayWeatherSummary = ({iconUrl, handleOnSearch}) => {
+const TodayWeatherSummary = ({iconUrl, isdegreeCelcius, handleOnSearch}) => {
     const classes = useStyles();
     const {current, location} = useSelector((state) => state);
     return (
         <Grid className={classes.summary} item md={3} xs={12} >
             <Search btn={classes.summarydetails} handleOnSearch={handleOnSearch}/>
-            <TodaySummary currentWeather={current} iconUrl={iconUrl} locationDetails={location}/>
+            <TodaySummary currentWeather={current} iconUrl={iconUrl} isdegreeCelcius={isdegreeCelcius} locationDetails={location}/>
             <City locationDetails={location}/>
         </Grid>
     )

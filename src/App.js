@@ -12,7 +12,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [iconUrl, setIconUrl] = useState('64x64'); // just set anything borake the rest of the window shows and not an error
   const [searchPlace, setsearchPlace] = useState('Nairobi');
-  
+  const [isdegreeCelcius, setisdegreeCelcius] = useState(true);
 
   const dispatch = useDispatch();
   const actions = bindActionCreators(actionCreators, dispatch);
@@ -71,6 +71,10 @@ function App() {
     }
   }
 
+  const toggleCelciusOrFarenheit = (e) => {
+    setisdegreeCelcius(!isdegreeCelcius);
+  }
+
   return (
     <>
     {
@@ -85,8 +89,8 @@ function App() {
         </div>
       :
       <Grid container>
-        <TodayWeatherSummary  iconUrl={iconUrl} handleOnSearch={handleOnSearch}/>
-        <WeatherForecastDetails/>
+        <TodayWeatherSummary  iconUrl={iconUrl} isdegreeCelcius={isdegreeCelcius} handleOnSearch={handleOnSearch}/>
+        <WeatherForecastDetails isdegreeCelcius={isdegreeCelcius} toggleCelciusOrFarenheit={toggleCelciusOrFarenheit}/>
       </Grid>
   }
     </>

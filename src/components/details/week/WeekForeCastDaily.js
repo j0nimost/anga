@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     }
 })
 
-const WeekForeCastDaily = ({forecast}) => {
+const WeekForeCastDaily = ({forecast, isdegreeCelcius}) => {
     const classes = useStyles();
     let icon;
 
@@ -46,7 +46,8 @@ const WeekForeCastDaily = ({forecast}) => {
                     />
                     <CardContent sx={{paddingTop: '8px', textAlign: 'center' }}>
                         <Typography variant="body2" color="text.secondary">
-                            {forecast.day.maxtemp_c}&#186; &nbsp; {forecast.day.mintemp_c}&#186;
+                            {isdegreeCelcius ? forecast.day.maxtemp_c : forecast.day.maxtemp_f}&#186; &nbsp; 
+                            {isdegreeCelcius ? forecast.day.mintemp_c : forecast.day.mintemp_f}&#186;
                         </Typography>
                     </CardContent>
                 </CardActionArea>

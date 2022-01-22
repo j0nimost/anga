@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     }
 })
 
-const TodaySummary = ({iconUrl}) => {
+const TodaySummary = ({iconUrl, isdegreeCelcius}) => {
     const classes = useStyles();
     const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     const {current, location} = useSelector((state) => state);
@@ -39,7 +39,9 @@ const TodaySummary = ({iconUrl}) => {
             />
 
             <Typography variant="h2" component="h2">
-                {current.temp_c} <span className={classes.degree}>&#8451;</span>
+                {isdegreeCelcius === true ? current.temp_c : current.temp_f}
+                
+                {isdegreeCelcius === true ? <span className={classes.degree}>&#8451;</span> : <span className={classes.degree}>&#8457;</span>}
             </Typography>
             <Typography variant="h5">
                 {weekday[today.getDay()]}, <span className={classes.hrs}>{(today.getHours() < 10 ? '0' + today.getHours().toString() : today.getHours()) + ':' + (today.getMinutes() < 10 ? '0' + today.getMinutes().toString() : today.getMinutes())}</span>

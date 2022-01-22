@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 })
 // 6hrs
 
-const WeatherByTheHour = ({forecast}) => {
+const WeatherByTheHour = ({forecast, isdegreeCelcius}) => {
     const classes = useStyles();
     
     let icon
@@ -42,7 +42,7 @@ const WeatherByTheHour = ({forecast}) => {
                     />
                     <CardContent sx={{paddingTop: '8px', textAlign: 'center'}}>
                         <Typography variant="body2" color="text.secondary">
-                            {forecast.temp_c}&#186; &nbsp; {forecast.humidity}%
+                            {isdegreeCelcius ? forecast.temp_c : forecast.temp_f}&#186; &nbsp; {forecast.humidity}%
                         </Typography>
                     </CardContent>
                 </CardActionArea>

@@ -1,10 +1,10 @@
 import React from 'react'
 import WeatherByTheHourList from './WeatherByTheHourList'
 
-const index = () => {
+const index = ({isdegreeCelcius}) => {
     return (
         <>          
-            <WeatherByTheHourList/>
+            <WeatherByTheHourList isdegreeCelcius={isdegreeCelcius}/>
         </>
     )
 }

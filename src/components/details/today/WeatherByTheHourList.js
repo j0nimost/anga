@@ -12,13 +12,13 @@ const useStyle = makeStyles({
     }
 })
 
-const WeatherByTheHourList = () => {
+const WeatherByTheHourList = ({isdegreeCelcius}) => {
     const classes = useStyle();
     const todaysForecast = useSelector((state) => state.forecast);
     return (
         <Grid container spacing={2} className={classes.gridContainer}>
             {todaysForecast.map((foreCast, index) => {
-                return <WeatherByTheHour forecast={foreCast} key={index}/>
+                return <WeatherByTheHour forecast={foreCast} key={index} isdegreeCelcius={isdegreeCelcius}/>
             })}
         </Grid>
     )
