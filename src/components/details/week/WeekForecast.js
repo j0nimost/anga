@@ -12,13 +12,13 @@ const useStyle = makeStyles({
     }
 })
 
-const WeekForecast = () => {
+const WeekForecast = ({isdegreeCelcius}) => {
     const classes = useStyle();
     const weekForecast = useSelector((state) => state.weekForecast);
     return (
         <Grid container spacing={2} className={classes.gridContainer}>
             {weekForecast.map((foreCast, index) => {
-                return <WeekForeCastDaily forecast={foreCast} key={index}/>
+                return <WeekForeCastDaily forecast={foreCast} key={index} isdegreeCelcius={isdegreeCelcius}/>
             })}
         </Grid>
     )
