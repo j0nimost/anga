@@ -38,9 +38,8 @@ const useStyles = makeStyles({
 const SecondRowHighlights = () => {
     const classes = useStyles();
     const  {current} = useSelector((state) => state);
-
-    const aq = (current.air_quality.co.toFixed()/500)*100;
-    console.log(aq);
+    // const aq = (current.air_quality.co.toFixed()/500)*100;
+    const aq = current.air_quality?.co.toFixed() || '';
     return (
         <Grid container spacing={3.8} className={classes.highlight}>
 
@@ -93,7 +92,7 @@ const SecondRowHighlights = () => {
                         <Stack sx={{ height: 80}} direction="row" spacing={8}>
                             
                             
-                            <Typography variant="h2">{current.air_quality.co.toFixed()}</Typography>
+                            <Typography variant="h2">{aq}</Typography>
                             <Slider
                                     className={
                                         (() =>{
