@@ -16,7 +16,6 @@ function App() {
 
   const dispatch = useDispatch();
   const actions = bindActionCreators(actionCreators, dispatch);
-
   
   useEffect(() => {
 
@@ -53,7 +52,7 @@ function App() {
         addWeekForecast(data.forecast.forecastday)
         addSunriseandSunset([sunrise, sunset]);
 
-
+        
         /// last call
         setIsLoading(false);
       }
@@ -61,6 +60,7 @@ function App() {
     }
 
     fetchWeatherData();
+    
 
   }, [searchPlace]);
 

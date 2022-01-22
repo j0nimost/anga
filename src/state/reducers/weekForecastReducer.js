@@ -4,7 +4,7 @@ const weekForecastReducer = (state =[], actions) => {
             return [...actions.payload.slice(0,6)]
     
         default:
-            return [state];
+            return state;
     }
 }   
 
