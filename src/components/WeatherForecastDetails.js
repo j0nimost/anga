@@ -35,13 +35,20 @@ const useStyles = makeStyles({
         paddingLeft: '4px',
         paddingRight: '4px',
         color: 'gray'
+    },
+
+    btnInactive: {
+        borderColor: "gray",
+        borderRadius: '14px',
+        color: 'gray',
+        fontSize: '14px'
     }
 });
 
 
 
 
-const WeatherForecastDetails = () => {
+const WeatherForecastDetails = ({isdegreeCelcius,toggleCelciusOrFarenheit}) => {
 
     const [istodayForecast, setIstodayForecast] = useState(true);
 
@@ -61,11 +68,11 @@ const WeatherForecastDetails = () => {
                 <Tab className={istodayForecast ? classes.tabNotActive : classes.tab} label='Today'  onClick={handleIsTodayForecast} />
                 <Tab className={!istodayForecast ? classes.tabNotActive : classes.tab} label='Week' onClick={handleIsWeekForecast}/>
             </Tabs>
-            {istodayForecast ? <TodayForecast/> : <WeekForecast/>}
+            {istodayForecast ? <TodayForecast isdegreeCelcius={isdegreeCelcius}/> : <WeekForecast isdegreeCelcius={isdegreeCelcius}/>}
 
             <ButtonGroup variant='outlined' size='small' aria-label='small button group' className={classes.btngrp}>
-                <Button className={classes.btn}>&#8451;</Button>
-                <Button className={classes.btn}>&#8457;</Button>
+                <Button className={isdegreeCelcius === false ? classes.btn : classes.btnInactive} onClick={toggleCelciusOrFarenheit} disabled={isdegreeCelcius}>&#8451;</Button>
+                <Button className={isdegreeCelcius === true ? classes.btn : classes.btnInactive} onClick={toggleCelciusOrFarenheit} disabled={!isdegreeCelcius}>&#8457;</Button>
             </ButtonGroup>
 
             <TodayHighlights/>
