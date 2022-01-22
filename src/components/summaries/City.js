@@ -23,8 +23,6 @@ const useStyles = makeStyles({
 
 const City = ({locationDetails}) => {
     const classes = useStyles();
-
-    console.log(locationDetails)
     return (
         <div className={classes.imageDiv}>
             <Box

@@ -7,7 +7,7 @@ const sunriseandsunsetReducer = (state={}, actions) => {
           }
   
       default:
-          return {}
+          return state
   }
 };
 

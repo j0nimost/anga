@@ -1,10 +1,11 @@
 const currentWeatherReducer = (state={}, actions) => {
   switch (actions.type) {
       case 'addCurrentWeather':
-          return actions.payload
+          state = actions.payload;
+          return state;
   
       default:
-          return {}
+          return state
   }
 };
 
